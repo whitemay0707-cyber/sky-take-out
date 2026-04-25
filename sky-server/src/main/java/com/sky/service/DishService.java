@@ -6,6 +6,8 @@ import com.sky.dto.DishPageQueryDTO;
 import com.sky.result.PageResult;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface DishService {
     /**
@@ -19,4 +21,10 @@ public interface DishService {
      *
      */
     PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
+    /**
+     * 批量删除菜品
+     * @param ids
+     * @return
+     */
+    void deleteBatch(List<Long> ids);
 }
