@@ -32,11 +32,11 @@ public class AliOssUtil {
      * @return
      */
     public String upload(byte[] bytes, String objectName) {
-        String uploadDir = "src/main/resources/static/upload/";
-//        File uploadDir = new File("src/main/resources/static/upload/");
-//        if (!uploadDir.exists()) {
-//            uploadDir.mkdirs();
-//        }
+        String uploadDir = System.getProperty("user.dir") + "/upload/";
+        File directory = new File(uploadDir);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
         File file = new File(uploadDir + objectName);
         try {
             Files.write(file.toPath(), bytes);
@@ -44,7 +44,7 @@ public class AliOssUtil {
             e.printStackTrace();
         }
         // 返回URL：
-        return "http://localhost:8080/upload/" + objectName;
+        return "/upload/" + objectName;
 
 //        // 创建OSSClient实例。
 //        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
